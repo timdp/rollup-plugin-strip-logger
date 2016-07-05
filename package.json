@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-strip-logger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Strips out references to a logger package.",
   "main": "index.js",
   "jsnext:main": "src/index.js",
