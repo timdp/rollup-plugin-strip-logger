@@ -67,6 +67,8 @@ export default (options = {}) => {
   const filter = createFilter(options.include, options.exclude)
   const parsers = createParsers(options)
   return {
+    name: 'strip-logger',
+
     transform (code, id) {
       if (!filter(id) || extname(id) !== '.js') {
         return null
