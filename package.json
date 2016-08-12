@@ -26,7 +26,7 @@
     "acorn": "^3.2.0",
     "debug": "^2.2.0",
     "estree-walker": "^0.2.1",
-    "magic-string": "^0.15.1",
+    "magic-string": "^0.16.0",
     "rollup-pluginutils": "^1.5.0"
   },
   "devDependencies": {
