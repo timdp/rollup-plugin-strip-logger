@@ -1,6 +1,6 @@
 # rollup-plugin-strip-logger
 
-[![npm](https://img.shields.io/npm/v/rollup-plugin-strip-logger.svg)](https://www.npmjs.com/package/rollup-plugin-strip-logger) [![Dependencies](https://img.shields.io/david/timdp/rollup-plugin-strip-logger.svg)](https://david-dm.org/timdp/rollup-plugin-strip-logger) [![Build Status](https://img.shields.io/travis/timdp/rollup-plugin-strip-logger/master.svg)](https://travis-ci.org/timdp/rollup-plugin-strip-logger) [![Coverage Status](https://img.shields.io/coveralls/timdp/rollup-plugin-strip-logger/master.svg)](https://coveralls.io/r/timdp/rollup-plugin-strip-logger) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
+[![npm](https://img.shields.io/npm/v/rollup-plugin-strip-logger.svg)](https://www.npmjs.com/package/rollup-plugin-strip-logger) [![Dependencies](https://img.shields.io/david/timdp/rollup-plugin-strip-logger.svg)](https://david-dm.org/timdp/rollup-plugin-strip-logger) [![Build Status](https://img.shields.io/travis/timdp/rollup-plugin-strip-logger/master.svg)](https://travis-ci.org/timdp/rollup-plugin-strip-logger) [![Coverage Status](https://img.shields.io/coveralls/timdp/rollup-plugin-strip-logger/master.svg)](https://coveralls.io/r/timdp/rollup-plugin-strip-logger) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 Strips out references to a logger package.
 
