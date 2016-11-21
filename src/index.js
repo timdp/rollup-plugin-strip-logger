@@ -86,10 +86,14 @@ export default (options = {}) => {
             return
           }
           if (result === ACTION_REMOVE) {
-            debug('Removing: ' + magicString.slice(node.start, node.end))
+            if (debug.enabled) {
+              debug('Removing: ' + magicString.slice(node.start, node.end))
+            }
             magicString.remove(node.start, node.end)
           } else if (result === ACTION_UPDATE) {
-            debug('Updated: ' + magicString.slice(node.start, node.end))
+            if (debug.enabled) {
+              debug('Updated: ' + magicString.slice(node.start, node.end))
+            }
           }
           changed = true
           this.skip()
