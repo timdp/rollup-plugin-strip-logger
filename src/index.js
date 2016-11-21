@@ -12,7 +12,7 @@ const ACTION_NONE = 0
 const ACTION_REMOVE = 1
 const ACTION_UPDATE = 2
 
-const createParsers = ({variableName, propertyName, packageName}) => ({
+const createVisitors = ({variableName, propertyName, packageName}) => ({
   VariableDeclaration (node) {
     if (variableName == null) {
       return ACTION_NONE
@@ -65,7 +65,7 @@ const createParsers = ({variableName, propertyName, packageName}) => ({
 
 export default (options = {}) => {
   const filter = createFilter(options.include, options.exclude)
-  const parsers = createParsers(options)
+  const visitors = createVisitors(options)
   return {
     name: 'strip-logger',
 
@@ -78,10 +78,10 @@ export default (options = {}) => {
       let changed = false
       walk(ast, {
         enter (node, parent) {
-          if (parsers[node.type] == null) {
+          if (visitors[node.type] == null) {
             return
           }
-          const result = parsers[node.type](node)
+          const result = visitors[node.type](node)
           if (result === ACTION_NONE) {
             return
           }
