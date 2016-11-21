@@ -3,8 +3,8 @@ import {parse} from 'acorn'
 import {walk} from 'estree-walker'
 import MagicString from 'magic-string'
 import {createFilter} from 'rollup-pluginutils'
+import getPath from 'lodash.get'
 import {extname} from 'path'
-import getPath from './util/get-path'
 
 const debug = _debug('rollup-plugin-strip-logger')
 
