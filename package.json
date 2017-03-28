@@ -23,7 +23,7 @@
   "repository": "timdp/rollup-plugin-strip-logger",
   "bugs": "https://github.com/timdp/rollup-plugin-strip-logger/issues",
   "dependencies": {
-    "acorn": "^4.0.3",
+    "acorn": "^5.0.0",
     "debug": "^2.2.0",
     "estree-walker": "^0.3.0",
     "lodash.get": "^4.4.2",
