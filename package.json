@@ -24,7 +24,7 @@
   "bugs": "https://github.com/timdp/rollup-plugin-strip-logger/issues",
   "dependencies": {
     "acorn": "^4.0.3",
-    "debug": "^2.2.0",
+    "debug": "^3.0.0",
     "estree-walker": "^0.3.0",
     "lodash.get": "^4.4.2",
     "magic-string": "^0.17.0",
