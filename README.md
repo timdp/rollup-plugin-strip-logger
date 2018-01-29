@@ -33,17 +33,17 @@ export default {
 
 ## Options
 
-### `variableName`
+### `variableNames`
 
-Remove all references to variables by this name.
+Remove all references to variables by the names in this array.
 
-### `propertyName`
+### `propertyNames`
 
-Remove all references to `obj[propertyName]`.
+Remove all references to `obj[name]` for each `name` in this array.
 
-### `packageName`
+### `packageNames`
 
-Remove all imports of packages/modules by this name.
+Remove all imports of packages/modules by the names in this array.
 
 ## Author
 
