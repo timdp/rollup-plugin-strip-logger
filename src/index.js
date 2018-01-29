@@ -12,56 +12,46 @@ const ACTION_NONE = 0
 const ACTION_REMOVE = 1
 const ACTION_UPDATE = 2
 
-const createVisitors = ({variableName, propertyName, packageName}) => ({
-  VariableDeclaration (node) {
-    if (variableName == null) {
-      return ACTION_NONE
-    }
-    const name = getPath(node, ['declarations', 0, 'id', 'name'])
-    return (name === variableName) ? ACTION_REMOVE : ACTION_NONE
-  },
-
-  AssignmentExpression (node) {
-    if (propertyName == null && variableName == null) {
-      return ACTION_NONE
-    }
-    const lhs = getPath(node, ['left', 'property', 'name'])
-    return ((node.left.type === 'MemberExpression') ? (lhs === propertyName) : (lhs === variableName))
-      ? ACTION_REMOVE : ACTION_NONE
-  },
-
-  ExpressionStatement (node) {
-    if (propertyName == null && variableName == null) {
-      return ACTION_NONE
-    }
-    return (
-        getPath(node, ['expression', 'callee', 'object', 'property', 'name']) === propertyName ||
-        getPath(node, ['expression', 'callee', 'object', 'name']) === variableName
-      ) ? ACTION_REMOVE : ACTION_NONE
-  },
-
-  ImportDeclaration (node) {
-    if (packageName == null) {
-      return ACTION_NONE
-    }
-    const src = getPath(node, ['source', 'value'])
-    return (src === packageName) ? ACTION_REMOVE : ACTION_NONE
-  },
-
-  ReturnStatement (node) {
-    // TODO Support return obj[propertyName]
-    if (variableName == null) {
-      return ACTION_NONE
-    }
-    const arg = getPath(node, ['argument', 'name'])
-    if (arg === variableName) {
-      node.argument = null
-      return ACTION_UPDATE
-    } else {
-      return ACTION_NONE
+const createVisitors = ({variableNames, propertyNames, packageNames}) => {
+  variableNames = variableNames || []
+  propertyNames = propertyNames || []
+  packageNames = packageNames || []
+  const noop = () => ACTION_NONE
+  const noVars = (variableNames.length === 0)
+  const noVarsOrProps = (noVars && propertyNames.length === 0)
+  const noPackages = (packageNames.length === 0)
+  return {
+    VariableDeclaration: noVars ? noop : node => {
+      const name = getPath(node, ['declarations', 0, 'id', 'name'])
+      return variableNames.indexOf(name) < 0 ? ACTION_NONE : ACTION_REMOVE
+    },
+    AssignmentExpression: noVarsOrProps ? noop : node => {
+      const lhs = getPath(node, ['left', 'property', 'name'])
+      const names = (node.left.type === 'MemberExpression') ? propertyNames : variableNames
+      return names.indexOf(lhs) < 0
+        ? ACTION_NONE : ACTION_REMOVE
+    },
+    ExpressionStatement: noVarsOrProps ? noop : node => {
+      return (
+        propertyNames.indexOf(getPath(node, ['expression', 'callee', 'object', 'property', 'name'])) < 0 &&
+        variableNames.indexOf(getPath(node, ['expression', 'callee', 'object', 'name'])) < 0
+      ) ? ACTION_NONE : ACTION_REMOVE
+    },
+    ImportDeclaration: noPackages ? noop : node => {
+      const src = getPath(node, ['source', 'value'])
+      return packageNames.indexOf(src) < 0 ? ACTION_NONE : ACTION_REMOVE
+    },
+    ReturnStatement: noVars ? noop : node => {
+      const arg = getPath(node, ['argument', 'name'])
+      if (variableNames.indexOf(arg) < 0) {
+        return ACTION_NONE
+      } else {
+        node.argument = null
+        return ACTION_UPDATE
+      }
     }
   }
-})
+}
 
 export default (options = {}) => {
   const filter = createFilter(options.include, options.exclude)

@@ -23,9 +23,9 @@ export default {
   dest: 'dist/my-lib.js',
   plugins: [
     stripLogger({
-      variableName: 'logger',
-      propertyName: '_logger',
-      packageName: 'my-logger'
+      variableNames: ['logger'],
+      propertyNames: ['_logger'],
+      packageNames: ['my-logger']
     })
   ]
 }
