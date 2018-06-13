@@ -64,7 +64,7 @@ export default (options = {}) => {
         return null
       }
       const magicString = new MagicString(code)
-      const ast = parse(code, {ecmaVersion: 6, sourceType: 'module'})
+      const ast = parse(code, {ecmaVersion: 8, sourceType: 'module'})
       let changed = false
       walk(ast, {
         enter (node, parent) {
