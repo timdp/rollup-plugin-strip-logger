@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-strip-logger",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Strips out references to a logger package.",
   "main": "index.js",
   "author": "Tim De Pauw <hi@tmdpw.eu> (https://tmdpw.eu/)",
