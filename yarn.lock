@@ -468,6 +468,11 @@ estree-walker@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.5.2.tgz#d3850be7529c9580d815600b53126515e146dd39"
 
+estree-walker@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.0.tgz#ebae31c73abf797c17efaf6856e0f05cff45e262"
+  integrity sha512-vY6xMN2j47HfQfVWGRqHshr1olf+XS1Y488NoqjDP1c8E1TcoZr/D3eSGa6akBs76WL1X9nluWjgBsCKdt/qKg==
+
 esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
